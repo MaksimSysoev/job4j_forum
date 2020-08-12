@@ -26,12 +26,14 @@
             </tr>
             </thead>
             <tbody>
-            <a href="/registration">Регистрация пользователя</a>
             <c:forEach items="${posts}" var="post">
                 <tr>
                     <td><c:out value="${post.name}"/></td>
                 </tr>
             </c:forEach>
+            <tr>
+                <td><a href="/addpost">Создать пост</a></td>
+            </tr>
             </tbody>
         </table>
     </div>

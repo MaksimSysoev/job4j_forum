@@ -1,11 +1,11 @@
 package ru.job4j.forum.model;
 
-public class UserData {
+public class User {
 
     private String login;
     private String password;
 
-    public UserData(String login, String password) {
+    public User(String login, String password) {
         this.login = login;
         this.password = password;
     }

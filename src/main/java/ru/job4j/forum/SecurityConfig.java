@@ -9,7 +9,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ru.job4j.forum.repository.UserStore;
 
 @Configuration
 @EnableWebSecurity
@@ -20,7 +19,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        UserStore store = new UserStore();
         auth.inMemoryAuthentication()
                 .passwordEncoder(passwordEncoder)
                 .withUser("user").password(passwordEncoder.encode("123456")).roles("USER")
