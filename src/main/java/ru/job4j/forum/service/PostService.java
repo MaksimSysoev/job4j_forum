@@ -21,4 +21,12 @@ public class PostService {
         posts.findAll().forEach(rsl::add);
         return rsl;
     }
+
+    public Post findById(int id) {
+        return posts.findById((long)id).get();
+    }
+
+    public void create(Post post) {
+        posts.save(post);
+    }
 }
