@@ -29,6 +29,8 @@ public class PostControlTest {
     @Autowired
     private MockMvc mockMvc;
 
+
+
     @Test
     @WithMockUser
     public void shouldReturnDefaultMessage() throws Exception {
@@ -51,9 +53,15 @@ public class PostControlTest {
         ArgumentCaptor<Post> argument = ArgumentCaptor.forClass(Post.class);
         verify(posts).create(argument.capture());
 
-        verify(posts).findById(argument.getValue().getId());
-        argument.getValue().setName("Куплю ладу-весту.");
-        assertThat(argument.getValue().getName(), is("Куплю ладу-весту."));
+
+        this.mockMvc.perform(post("/post/update")
+                .param("id", "0")
+                .param("name","Куплю Ладу!"))
+                .andDo(print())
+                .andExpect(status().is3xxRedirection());
+        argument = ArgumentCaptor.forClass(Post.class);
+        verify(posts).update(argument.capture());
+        assertThat(argument.getValue().getName(), is("Куплю Ладу!"));
     }
 
 

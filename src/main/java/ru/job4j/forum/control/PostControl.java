@@ -30,4 +30,10 @@ public class PostControl {
         return "redirect:/post/" + post.getId();
     }
 
+    @RequestMapping(value="/post/update", method = RequestMethod.POST)
+    public String update(@ModelAttribute Post updPost) {
+        posts.update(updPost);
+        return "redirect:/post/update/" + updPost.getId();
+    }
+
 }

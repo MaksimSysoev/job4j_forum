@@ -1,21 +1,33 @@
 package ru.job4j.forum.model;
 
-public class User {
+import javax.persistence.*;
 
-    private String login;
+@Entity
+@Table(name = "users")
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    private String username;
     private String password;
 
-    public User(String login, String password) {
-        this.login = login;
-        this.password = password;
+
+    public static User of(String username) {
+        User user = new User();
+        user.username = username;
+        return user;
     }
 
-    public String getLogin() {
-        return login;
+    public int getId() {
+        return id;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

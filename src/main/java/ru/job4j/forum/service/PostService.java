@@ -29,4 +29,12 @@ public class PostService {
     public void create(Post post) {
         posts.save(post);
     }
+
+    public void update(Post updPost) {
+        Post post = findById(updPost.getId());
+        post.setName(updPost.getName());
+        post.setCreated(updPost.getCreated());
+        post.setDesc(updPost.getDesc());
+        posts.save(post);
+    }
 }
